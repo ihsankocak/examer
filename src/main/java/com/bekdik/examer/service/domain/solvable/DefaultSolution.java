@@ -1,4 +1,4 @@
-package com.bekdik.examer.model;
+package com.bekdik.examer.service.domain.solvable;
 
 import java.util.Objects;
 

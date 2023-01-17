@@ -8,6 +8,7 @@ class ExamerApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }
