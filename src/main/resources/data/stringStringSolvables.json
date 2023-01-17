@@ -1,0 +1,16 @@
+[{
+"id":"100",
+"problem":"Hangisi Hamit'in amcası değildir?",
+"solution":"Yusuf",
+"choosable":{"choices":["Ahmet","MEhmet","Murat","Yusuf"]}
+},{
+"id":"101",
+"problem":"Hangisi Hamit'in dayısı değildir?",
+"solution":"İbrahim",
+"choosable":{"choices":["İbrahim","Ömer","Berkay"]}
+},{
+"id":"102",
+"problem":"Hangisi Hamit'in halası değildir değildir",
+"solution":"Celile",
+"choosable":{"choices":["MEhtap","Celile","Medine"]}
+}]
