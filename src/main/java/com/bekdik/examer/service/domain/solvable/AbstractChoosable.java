@@ -14,4 +14,8 @@ public abstract class AbstractChoosable<T> {
 	public Collection<T> getChoices(){
 		return choices;
 	}
+
+	public void setChoices(Collection<T> choices) {
+		this.choices = choices;
+	}
 }

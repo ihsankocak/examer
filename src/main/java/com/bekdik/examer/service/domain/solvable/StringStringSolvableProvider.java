@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonArray;
@@ -12,7 +13,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-@Service("defaultSolvableProvider")
+@Service
+
 public  class StringStringSolvableProvider implements SolvableProvider {
 private   List<BaseSolvableWithChoosable<String, String>> solvableList;
 
@@ -24,7 +26,7 @@ private   List<BaseSolvableWithChoosable<String, String>> solvableList;
         JsonElement json = new JsonParser().parse(reader);
 
         // Get the array of complex objects from the JSON data
-        JsonArray array = json.getAsJsonArray();
+        JsonArray array = json.getAsJsonObject().getAsJsonArray("questions");
 
         // Create a list to hold the complex objects
         List<BaseSolvableWithChoosable<String, String>> complexObjects = new ArrayList<>();

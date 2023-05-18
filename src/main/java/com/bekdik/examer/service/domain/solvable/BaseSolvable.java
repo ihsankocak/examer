@@ -1,9 +1,12 @@
 package com.bekdik.examer.service.domain.solvable;
 
+import jakarta.persistence.Id;
+
 import java.util.Objects;
 import java.util.function.BiPredicate;
 
 public abstract class BaseSolvable<P,S> implements Solvable {
+
 	private long id;
 protected final P problem;
 protected final S solution;
@@ -26,7 +29,6 @@ public P getProblem() {
 public long getId() {
 	return id;
 }
-
 
 
 }

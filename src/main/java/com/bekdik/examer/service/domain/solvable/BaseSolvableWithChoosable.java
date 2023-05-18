@@ -15,4 +15,8 @@ this.choosable=Objects.requireNonNull(choosable);;
 public AbstractChoosable<S> getChoosable() {
 	return choosable;
 }
+
+	public void setChoosable(AbstractChoosable<S> choosable) {
+		this.choosable = choosable;
+	}
 }
