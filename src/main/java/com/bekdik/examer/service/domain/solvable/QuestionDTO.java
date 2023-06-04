@@ -1,16 +1,13 @@
 package com.bekdik.examer.service.domain.solvable;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 
 import java.util.List;
 
 public class QuestionDTO {
-
     private Long id;
     private String problem;
     private String solution;
-
     private List<String> choices;
 
     public Long getId() {

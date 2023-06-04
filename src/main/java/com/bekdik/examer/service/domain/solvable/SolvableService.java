@@ -15,15 +15,28 @@ public class SolvableService {
         this.solvableRepository = solvableRepository;
     }
 
-    public QuestionDTO createQuestion(QuestionDTO questionDTO) throws Exception{
+    public QuestionDTO createQuestion(QuestionDTO questionDTO) throws Exception {
 
-        QuestionEntity savedQuestionWithId = solvableRepository.save(questionMapper.toEntity(questionDTO));
+        Question savedQuestionWithId = solvableRepository.save(questionMapper.toEntity(questionDTO));
         return questionMapper.toDTO(savedQuestionWithId);
     }
 
-    public Collection<QuestionDTO> createQuestions(List<QuestionDTO> questionDTOList) throws Exception{
+    public Collection<QuestionDTO> createQuestions(List<QuestionDTO> questionDTOList) throws Exception {
 
-       List<QuestionEntity>  savedQuestionWithId = solvableRepository.saveAll(questionMapper.toEntityList(questionDTOList));
+        List<Question> savedQuestionWithId = solvableRepository.saveAll(questionMapper.toEntityList(questionDTOList));
         return questionMapper.toDTOList(savedQuestionWithId);
+    }
+
+    public QuestionDTO getQuestionById(Long questionId) {
+        try {
+            Question question = solvableRepository.findById(questionId).orElseThrow();
+            return questionMapper.toDTO(question);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Collection<QuestionDTO> getQuestionsOfExam() throws Exception {
+        return questionMapper.toDTOList(solvableRepository.findAll());
     }
 }

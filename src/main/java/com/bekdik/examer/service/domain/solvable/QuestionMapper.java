@@ -5,10 +5,10 @@ import java.util.Collection;
 
 @Mapper(componentModel = "spring")
 public interface QuestionMapper {
-    QuestionDTO toDTO(QuestionEntity source)throws Exception;
-    QuestionEntity toEntity(QuestionDTO destination) throws Exception;
+    QuestionDTO toDTO(Question source)throws Exception;
+    Question toEntity(QuestionDTO destination) throws Exception;
 
-    Collection<QuestionDTO>  toDTOList(Collection<QuestionEntity> questionEntityList) throws Exception;
-    Collection<QuestionEntity> toEntityList(Collection<QuestionDTO> questionEntityList)throws Exception;
+    Collection<QuestionDTO>  toDTOList(Collection<Question> questionList) throws Exception;
+    Collection<Question> toEntityList(Collection<QuestionDTO> questionList)throws Exception;
 }
 

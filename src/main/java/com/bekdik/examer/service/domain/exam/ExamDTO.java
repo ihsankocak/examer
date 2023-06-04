@@ -1,25 +1,15 @@
 package com.bekdik.examer.service.domain.exam;
 
-import com.bekdik.examer.service.domain.solvable.Question;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.bekdik.examer.service.domain.solvable.QuestionDTO;
 
 import java.util.List;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
+public class ExamDTO {
 
-@Entity
-
-public class Exam {
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String user;
     private byte[] audioRecord;
-    @OneToMany
-    List<Question> questionDTOList;
+    List<QuestionDTO> questionDTOList;
 
     public Long getId() {
         return id;
@@ -45,11 +35,11 @@ public class Exam {
         this.audioRecord = audioRecord;
     }
 
-    public List<Question> getQuestionDTOList() {
+    public List<QuestionDTO> getQuestionDTOList() {
         return questionDTOList;
     }
 
-    public void setQuestionDTOList(List<Question> questionDTOList) {
+    public void setQuestionDTOList(List<QuestionDTO> questionDTOList) {
         this.questionDTOList = questionDTOList;
     }
 }

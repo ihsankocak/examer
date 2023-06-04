@@ -1,9 +1,9 @@
-package com.bekdik.examer.service.domain.solvable;
+package com.bekdik.examer.service.domain.exam;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SolvableRepository extends JpaRepository<Question,Long> {
+public interface ExamRepository extends JpaRepository<Exam,Long> {
 
 }
