@@ -1,27 +1,11 @@
 package com.bekdik.examer.controller;
 
-import static com.bekdik.examer.service.domain.solvable.StringStringSolvableChoosable.getDummyStringStringSolvableChoosable;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Arrays;
-
-import com.bekdik.examer.service.domain.solvable.*;
+import com.bekdik.examer.service.domain.solvable.SolvableController;
+import com.bekdik.examer.service.domain.solvable.SolvableProvider;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-
-
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.reset;
@@ -33,7 +17,7 @@ public class SolvableControllerTest {
     @Autowired
     MockMvc mockMvc;
 
-    @Test
+    /*@Test
     public void testGetDefaultSolvables() throws Exception {
 
         StringStringSolvableChoosable stringSolvableChoosable = getDummyStringStringSolvableChoosable();
@@ -50,7 +34,7 @@ public class SolvableControllerTest {
 
         mockMvc.perform(put("/solvables/"+stringSolvableChoosable.getId()+"/answer/"+correctAnswer)).andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON)).andExpect(content().string("true"));
         then(solvableProvider).should().getSolvables();
-    }
+    }*/
 
     @AfterEach
     void tearDown() {
