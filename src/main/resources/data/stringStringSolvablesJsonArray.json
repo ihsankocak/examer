@@ -1,6 +1,6 @@
 [
     {
-      "id": 100,
+
       "problem": "Hangisi Hamit'in amcası değildir?",
       "solution": "Yusuf",
 
@@ -13,7 +13,7 @@
 
     },
     {
-      "id": 101,
+
       "problem": "Hangisi Hamit'in dayısı değildir?",
       "solution": "İbrahim",
 
@@ -25,7 +25,7 @@
 
     },
     {
-      "id": 102,
+
       "problem": "Hangisi Hamit'in halası değildir değildir",
       "solution": "Celile",
 
