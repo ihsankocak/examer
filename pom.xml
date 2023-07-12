@@ -14,7 +14,7 @@
 	<name>examer</name>
 	<description>A platform to prepare different type of exams easily</description>
 	<properties>
-		<java.version>19</java.version>
+		<java.version>20</java.version>
 	
 	</properties>
 	<dependencies>
@@ -87,6 +87,56 @@
 					<source>19</source>
 					<target>19</target>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.37.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<verbose>true</verbose>
+					<images>
+						<image>
+							<name>${project.artifactId}</name>
+							<build>
+								<shell>
+									<exec>
+										<arg>/bin/sh</arg>
+										<arg>-c</arg>
+										<arg>mkdir -p /mnt/jenkins</arg>
+									</exec>
+								</shell>
+								<from>eclipse-temurin:19-jdk-alpine</from>
+								<ports>
+									<port>9090</port>
+								</ports>
+								<volumes>
+									<volume>/mnt/jenkins</volume>
+								</volumes>
+								<entryPoint>
+									<exec>
+										<args>java</args>
+										<args>-jar</args>
+										<args>/maven/${project.artifactId}-${project.version}.jar</args>
+									</exec>
+								</entryPoint>
+								<assembly>
+									<descriptorRef>artifact</descriptorRef>
+								</assembly>
+							</build>
+						</image>
+					</images>
+				</configuration>
+				<executions>
+					<execution>
+						<id>build</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
