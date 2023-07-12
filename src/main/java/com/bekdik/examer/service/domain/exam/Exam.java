@@ -1,11 +1,9 @@
 package com.bekdik.examer.service.domain.exam;
 
 import com.bekdik.examer.service.domain.solvable.Question;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -16,10 +14,11 @@ public class Exam {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    private String user;
-    private byte[] audioRecord;
+    private String username;
+
     @OneToMany
-    List<Question> questionDTOList;
+    @JoinColumn(name = "exam_id")
+    Collection<Question> questionDTOList;
 
     public Long getId() {
         return id;
@@ -29,27 +28,20 @@ public class Exam {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public byte[] getAudioRecord() {
-        return audioRecord;
-    }
-
-    public void setAudioRecord(byte[] audioRecord) {
-        this.audioRecord = audioRecord;
-    }
-
-    public List<Question> getQuestionDTOList() {
+    public Collection<Question> getQuestionDTOList() {
         return questionDTOList;
     }
 
-    public void setQuestionDTOList(List<Question> questionDTOList) {
+    public void setQuestionDTOList(Collection<Question> questionDTOList) {
         this.questionDTOList = questionDTOList;
     }
+
 }

@@ -1,9 +1,7 @@
 package com.bekdik.examer.service.domain.solvable;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.bekdik.examer.service.domain.exam.Exam;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -21,6 +19,10 @@ public class Question {
     private String solution;
     @Column(nullable = false)
     private List<String> choices;
+
+    @ManyToOne
+    //@JoinColumn(name = "exam_id", insertable = false, updatable = false)
+    private Exam exam;
 
     public Long getId() {
         return id;
@@ -52,5 +54,13 @@ public class Question {
 
     public void setChoices(List<String> choices) {
         this.choices = choices;
+    }
+
+    public Exam getExam() {
+        return exam;
+    }
+
+    public void setExam(Exam exam) {
+        this.exam = exam;
     }
 }

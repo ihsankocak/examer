@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import com.bekdik.examer.service.domain.exam.ExamDTO;
+import com.bekdik.examer.service.domain.exam.ExamService;
 import com.bekdik.examer.service.domain.solvable.*;
 import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.StringUtils;
@@ -23,7 +25,7 @@ public class SolvableController {
     private Logger logger = Logger.getLogger(this.getClass().getName());
     private SolvableProvider solvableProvider;
     private SolvableService solvableService;
-
+    private ExamService examService;
     public SolvableController(SolvableProvider solvableProvider, SolvableService solvableService) {
         super();
         this.solvableProvider = solvableProvider;
@@ -77,9 +79,9 @@ return null;
 
     @PostMapping
 
-    public Collection<QuestionDTO> createQuestions(@RequestBody List<QuestionDTO> questionDTOLists) {
+    public ExamDTO createExam(@RequestBody Collection<QuestionDTO> questionDTOLists, String owner) {
         try {
-            return solvableService.createQuestions(questionDTOLists);
+            return examService.createExam(questionDTOLists,owner);
         } catch (Exception e) {
             System.out.println("create exam failed");
             e.printStackTrace();
