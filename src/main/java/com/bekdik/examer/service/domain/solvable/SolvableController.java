@@ -1,22 +1,11 @@
 package com.bekdik.examer.service.domain.solvable;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
-
-import com.bekdik.examer.service.domain.exam.ExamDTO;
-import com.bekdik.examer.service.domain.exam.ExamService;
-import com.bekdik.examer.service.domain.solvable.*;
 import jakarta.validation.constraints.NotNull;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import static org.springframework.boot.logging.LogLevel.ERROR;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
 @CrossOrigin(origins = "http://localhost:5173", maxAge = 3600, methods = {RequestMethod.HEAD, RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 @RestController("defaultSolvableController")
@@ -25,7 +14,7 @@ public class SolvableController {
     private Logger logger = Logger.getLogger(this.getClass().getName());
     private SolvableProvider solvableProvider;
     private SolvableService solvableService;
-    private ExamService examService;
+
     public SolvableController(SolvableProvider solvableProvider, SolvableService solvableService) {
         super();
         this.solvableProvider = solvableProvider;
@@ -43,14 +32,7 @@ public class SolvableController {
         System.out.println(s2);
     }
 
-    @GetMapping
-    public Collection<QuestionDTO> getDefaultSolvables() {
-        try {
-            return solvableService.getQuestionsOfExam();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 
     @PutMapping("{solvableId}/answer/{answer}")
 
@@ -64,30 +46,8 @@ public class SolvableController {
         }
     }
 
-	/* @PostMapping
 
-	public QuestionDTO createExam(@RequestBody QuestionDTO question) {
-	try{
-		return solvableService.createQuestion(question);
-	}catch (Exception e){
-		System.out.println("create exam failed");
-		e.printStackTrace();
-	}
-return null;
 
-	}*/
 
-    @PostMapping
-
-    public ExamDTO createExam(@RequestBody Collection<QuestionDTO> questionDTOLists, String owner) {
-        try {
-            return examService.createExam(questionDTOLists,owner);
-        } catch (Exception e) {
-            System.out.println("create exam failed");
-            e.printStackTrace();
-        }
-        return null;
-
-    }
 
 }
